@@ -139,7 +139,7 @@
     --loader-track:#dcebf1;
     --loader-script:"Kaushan Script", "Segoe Script", "Brush Script MT", cursive;
     --loader-body:"Montserrat", system-ui, -apple-system, "Segoe UI", sans-serif;
-    --loader-duration:3s;
+    --loader-duration:1.7s;
     position:fixed; inset:0; z-index:9999;
     display:grid; place-items:center;
     padding:24px max(16px, env(safe-area-inset-left, 0px)) 24px max(16px, env(safe-area-inset-right, 0px));
@@ -788,7 +788,7 @@
           Friendly Care
         </div>
         <div class="hero-card">
-          <img src="gorakhfirstpage/vertical%20reception.png" alt="Gorakhnath Dental reception" style="width:100%; height:100%; object-fit:cover; position:absolute; inset:0;">
+          <img src="gorakhfirstpage/vertical-reception-web.jpg" alt="Gorakhnath Dental reception" style="width:100%; height:100%; object-fit:cover; position:absolute; inset:0;">
           <svg class="deco" viewBox="0 0 400 500" style="top:0;left:0;width:100%;height:100%;">
             <circle cx="330" cy="60" r="150" fill="rgba(199,44,65,0.18)"/>
             <path d="M60 400 C 120 460, 280 460, 340 400" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="2"/>
@@ -1201,17 +1201,16 @@
   var loaderBar = loader.querySelector('[role="progressbar"]');
   var loaderAnimation = loader.querySelector('.loader-cross').getAnimations ? loader.querySelector('.loader-cross').getAnimations()[0] : null;
   var loadingSteps = [[0, "Warming up the chair"], [25, "Polishing enamel"], [50, "Checking for cavities"], [75, "Almost smiling"], [100, "Ready"]];
-  var loaderDuration = 3000;
+  var loaderDuration = 1700;
   var loaderStart = performance.now();
   var reducedMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  var pageLoaded = false;
   var animationDone = reducedMotion;
   var loaderHideScheduled = false;
 
   function hideLoaderWhenReady(){
-    if(!pageLoaded || !animationDone || loaderHideScheduled){ return; }
+    if(!animationDone || loaderHideScheduled){ return; }
     loaderHideScheduled = true;
-    var minDisplayTime = 300;
+    var minDisplayTime = loaderDuration;
     var remaining = Math.max(0, minDisplayTime - (performance.now() - loaderStart));
     window.setTimeout(function(){ loader.classList.add('hide'); }, remaining);
   }
@@ -1220,6 +1219,7 @@
     loaderLabel.textContent = "Loading";
     loaderFill.style.transform = "scaleX(.35)";
     loaderBar.setAttribute('aria-valuenow', '35');
+    hideLoaderWhenReady();
   } else {
     var shownProgress = -1;
     var shownLabel = "";
@@ -1243,11 +1243,6 @@
 
     window.requestAnimationFrame(updateLoader);
   }
-
-  window.addEventListener('load', function(){
-    pageLoaded = true;
-    hideLoaderWhenReady();
-  }, {once:true});
 
   // ---- Header scroll state ----
   var header = document.getElementById('siteheader');
