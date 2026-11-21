@@ -508,6 +508,12 @@
     background:var(--pearl); padding:6px 12px; border-radius:100px;
   }
   .team-reg{ margin-top:16px; font-size:12.5px; color:var(--ink-soft); font-style:italic; }
+  .team-placeholder{
+    width:100%; height:100%; display:flex; flex-direction:column; align-items:center; justify-content:center;
+    gap:10px; color:var(--navy); opacity:0.55; font-family:'Plus Jakarta Sans',sans-serif;
+    font-weight:700; text-align:center;
+  }
+  .team-placeholder svg{ width:34%; }
   @media (max-width:760px){ .team-grid{ grid-template-columns:1fr; } }
 
   /* ===== Gallery ===== */
@@ -909,16 +915,6 @@
       <div class="team-grid reveal">
         <div class="team-card">
           <div class="team-photo">
-            <img src="doctor/doctor1-web.jpg" alt="Ambika Manandhar, dental hygienist" loading="lazy" decoding="async">
-          </div>
-          <div class="team-info">
-            <div class="eyebrow">Dental Hygienist</div>
-            <h3>Ambika Manandhar</h3>
-            <div class="team-role">Dental Hygiene &middot; CTEVT, Nepal &middot; 2013</div>
-          </div>
-        </div>
-        <div class="team-card">
-          <div class="team-photo">
             <img src="doctor/doctor2-web.jpg" alt="Dr. Abhished Makaju, dental surgeon" loading="lazy" decoding="async">
           </div>
           <div class="team-info">
@@ -935,6 +931,33 @@
             <div class="eyebrow">Dental Surgeon</div>
             <h3>Dr. Rusha Pote</h3>
             <div class="team-role">BDS &middot; NMC No. 26255</div>
+          </div>
+        </div>
+        <div class="team-card">
+          <div class="team-photo">
+            <img src="doctor/doctor1-web.jpg" alt="Ambika Manandhar, dental hygienist" loading="lazy" decoding="async">
+          </div>
+          <div class="team-info">
+            <div class="eyebrow">Dental Hygienist</div>
+            <h3>Ambika Manandhar</h3>
+            <div class="team-role">Dental Hygiene &middot; CTEVT, Nepal &middot; 2013</div>
+          </div>
+        </div>
+        <div class="team-card team-card-placeholder">
+          <div class="team-photo">
+            <div class="team-placeholder" aria-label="Space for another doctor">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                <circle cx="12" cy="8" r="4"></circle>
+                <path d="M5 21v-2a7 7 0 0 1 14 0v2"></path>
+                <path d="M18 8h4M20 6v4"></path>
+              </svg>
+              <span>Other Doctor</span>
+            </div>
+          </div>
+          <div class="team-info">
+            <div class="eyebrow">Our Team</div>
+            <h3>Other Doctor</h3>
+            <div class="team-role">Details Coming Soon</div>
           </div>
         </div>
       </div>
